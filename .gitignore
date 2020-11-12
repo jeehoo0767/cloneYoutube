@@ -3,6 +3,10 @@
 #upload
 /upload
 
+dev.js
+prod.js
+key.js
+
 # database
 /database.json
 
