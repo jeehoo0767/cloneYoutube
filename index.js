@@ -28,10 +28,9 @@ app.post('/register', (req, res) => {
     // 회원 가입 정보를 client에서 요청 받으면 
     // 그 정보들을 데이터 베이스에 insert
     const user = new User(req.body); // user 인스턴스 생성
-
     user.save((err, userInfo) => {
         if(err) return res.json({ success : false, err });
-        else return res.status(200).json({success : true});
+        return res.status(200).json({success : true});
     });
 });
 
