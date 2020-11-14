@@ -3,6 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const cors = require('cors');
 
 const config = require('./config/key');
 
@@ -12,7 +13,8 @@ const { User } = require('./models/User');
 app.use(bodyParser.urlencoded({ extended : true }));
 //application/json
 app.use(bodyParser.json()); 
-app.use(cookieParser());  
+app.use(cookieParser());
+app.use(cors());  
 
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI, {
