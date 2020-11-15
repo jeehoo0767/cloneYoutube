@@ -52,15 +52,14 @@ userSchema.pre('save', function(next){
     }
 });
 
-userSchema.method.comparedPassword = function(plainPassword, cb){
+userSchema.methods.comparePassword = function(plainPassword, cb) {
+    // 입력된 비밀번호와 데이터베이스의 암호화된 비밀번호를 비교
     bcrypt.compare(plainPassword, this.password, function(err, isMatch) {
         if(err) return cb(err),
         cb(null, isMatch)
     })
-}
-
-
-userSchema.method.generateToken = function(cb) {
+};
+userSchema.methods.generateToken = function(cb) {
     //jsonwebtoken 을 이용해서 토큰 생성
     let user = this;
     let token = jwt.sign(user._id.toHexString(), 'secretToken');
@@ -70,7 +69,7 @@ userSchema.method.generateToken = function(cb) {
         if(err) return cb(err);
         cb(null, user);
     })
-}
+};
 
 
 const User = mongoose.model('User', userSchema);
