@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const cors = require('cors');
+// const cors = require('cors');
 
 const config = require('./config/key');
 
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended : true }));
 //application/json
 app.use(bodyParser.json()); 
 app.use(cookieParser());
-app.use(cors());  
+// app.use(cors());  
 
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI, {
@@ -42,7 +42,7 @@ app.post('/login', (req, res) => {
     // 요청된 이메일 데이터베이스 에서 찾음
     //요청된 이메일이 데이터베이스에 있다면 비밀번호가 맞는지 확인
     //비밀번호 까지 맞다면 토큰 생성
-    console.log("좆같은 로그인 요청");
+    console.log("로그인 요청");
 
     User.findOne({email : req.body.email}, (err, user) => {
         if(!user) {
@@ -53,9 +53,9 @@ app.post('/login', (req, res) => {
         }
 
         user.comparePassword(req.body.password, (err, isMatch) => {
-            if(!isMatch){
+            if(!isMatch)
                 return res.json({ loginSuccess : false, message : "비밀번호가 틀렸습니다."})
-            };
+            
             user.generateToken((err, user) => {
                 if(err) return res.status(400).send(err);
                 //토큰을 저장한다. 쿠키나, 로컬스토리지에
