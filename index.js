@@ -4,7 +4,7 @@ const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 // const cors = require('cors');
-
+const { auth } = require('./middleware/auth');
 const config = require('./config/key');
 
 const { User } = require('./models/User');
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
     res.send('hello world hi ~~~~');
 });
 
-app.post('/register', (req, res) => {
+app.post('/api/users/register', (req, res) => {
     // 회원 가입 정보를 client에서 요청 받으면 
     // 그 정보들을 데이터 베이스에 insert
     const user = new User(req.body); // user 인스턴스 생성
@@ -38,7 +38,7 @@ app.post('/register', (req, res) => {
     });
 });
 
-app.post('/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
     // 요청된 이메일 데이터베이스 에서 찾음
     //요청된 이메일이 데이터베이스에 있다면 비밀번호가 맞는지 확인
     //비밀번호 까지 맞다면 토큰 생성
@@ -65,6 +65,10 @@ app.post('/login', (req, res) => {
             })
         })
     })
+})
+
+app.get('/api/users/auth', auth, (req, res) => {
+
 })
 
 app.listen(port, () => {
