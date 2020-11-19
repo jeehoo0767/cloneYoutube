@@ -1,3 +1,5 @@
+# React, express.js를 이용한 Youtube Clone
+
 ### _actions -> Redux를 위한 폴더
 ### components, views -> Page 폴더
 ### conponents, views, Sections -> 해당 페이지들의 css파일, component
