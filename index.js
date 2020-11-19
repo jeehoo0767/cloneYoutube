@@ -3,7 +3,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-// const cors = require('cors');
+const cors = require('cors');
 const { auth } = require('./middleware/auth');
 const config = require('./config/key');
 
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended : true }));
 //application/json
 app.use(bodyParser.json()); 
 app.use(cookieParser());
-// app.use(cors());  
+app.use(cors());  
 
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI, {
@@ -79,6 +79,17 @@ app.get('/api/users/auth', auth, (req, res) => {
         role : req.user.role,
         image : req.user.image
     })
+})
+
+app.get('/api/users/logout', auth, (req,res) => {
+    User.findOneAndUpdate({ _id : req.user._id }, 
+        {token : ""}, 
+        (err, user) => {
+            if(err) return res.json({success : false, err});
+            return res.status(200).send({
+                success : true
+            })
+        })
 })
 
 app.listen(port, () => {
