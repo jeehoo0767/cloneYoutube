@@ -84,6 +84,7 @@ app.get('/api/users/auth', auth, (req, res) => {
 })
 
 app.get('/api/users/logout', auth, (req,res) => {
+    console.log("로그아웃요청");
     User.findOneAndUpdate({ _id : req.user._id }, 
         {token : ""}, 
         (err, user) => {
