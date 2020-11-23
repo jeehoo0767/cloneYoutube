@@ -42,7 +42,7 @@ userSchema.pre('save', function(next){
         bcrypt.genSalt(saltRounds, function(err, salt) {
             if(err) return next(err);
             bcrypt.hash( user.password, salt , function(err, hash) {
-                if(err) return next(err);
+                if(err) return next(err)
                 user.password = hash;
                 next();
             });
@@ -54,12 +54,14 @@ userSchema.pre('save', function(next){
 
 userSchema.methods.comparePassword = function(plainPassword, cb) {
     // 입력된 비밀번호와 데이터베이스의 암호화된 비밀번호를 비교
+    console.log("컴페어패스워드")
     bcrypt.compare(plainPassword, this.password, function(err, isMatch) {
-        if(err) return cb(err),
+        if(err) return cb(err)
         cb(null, isMatch)
     })
 };
 userSchema.methods.generateToken = function(cb) {
+    console.log("토큰 생성")
     //jsonwebtoken 을 이용해서 토큰 생성 
     var user = this;
     var token = jwt.sign(user._id.toHexString(), 'secretToken');

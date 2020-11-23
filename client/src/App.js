@@ -10,18 +10,20 @@ import LoginPage from './components/views/LoginPage/LoginPage'
 import RegisterPage from './components/views/RegisterPage/RegisterPage'
 function App() {
   return (
-    <Router>
     <div>
+      <Router>
+      <div>
 
-      {/* A <Switch> looks through its children <Route>s and
-          renders the first one that matches the current URL. */}
-      <Switch>
-        <Route exact path="/landing" component={LandingPage}/>
-        <Route exact path="/login" component={LoginPage}/>
-        <Route exact path="/register" component={RegisterPage}/>
-      </Switch>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route exact path="/landing" component={LandingPage}/>
+          <Route exact path="/login" component={LoginPage}/>
+          <Route exact path="/register" component={RegisterPage}/>
+        </Switch>
+      </div>
+      </Router>
     </div>
-  </Router>
   )
 }
 
