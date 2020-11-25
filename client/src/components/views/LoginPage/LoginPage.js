@@ -2,7 +2,7 @@ import Axios from 'axios';
 import React,{ useState } from 'react'
 import { Provider, useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
-
+import { withRouter } from 'react-router-dom';
 
 function LoginPage(props) {
 
@@ -30,7 +30,7 @@ function LoginPage(props) {
         dispatch(loginUser(body))
         .then(response => {
             if(response.payload.loginSuccess) {
-                props.history.push('/landing');
+                props.history.push('/');
             } else {
                 alert('Error');
             }
@@ -56,4 +56,4 @@ function LoginPage(props) {
     )
 }
 
-export default LoginPage
+export default withRouter(LoginPage);

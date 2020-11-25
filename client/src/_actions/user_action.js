@@ -23,3 +23,15 @@ export function registerUser(dataTosubmit) {
             payload: request
         }
 }
+
+export function auth() {
+    const request = Axios.get('/api/users/auth')
+        .then(response => response.data)
+    
+        return {
+            type : "AUTH_USER",
+            payload: request
+        }
+}
+
+
