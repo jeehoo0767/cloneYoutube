@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Typography, Button, Form, message, Input, Icon } from 'antd';
 import Dropzone from 'react-dropzone'
 
@@ -6,7 +6,35 @@ const { Title } = Typography;
 
 const { TextArea } = Input;
 
+const PrivateOption = [
+    {value : 0, label : "Private"},
+    {value : 1, label : "Public"}
+];
+
+const CtegoryOption = [
+    {value : 0, label : "Film & Animation"},
+    {value : 1, label : "Autos & Vehicles"},
+    {value : 2, label : "Music"},
+    {value : 3, label : "Pets & Animals"},
+
+]
+
 function VideoUploadPage() {
+
+    const [VideoTitle, setVideoTitle] = useState("");
+    const [Description, setDescription] = useState("")
+    const [Private, setPrivate] = useState(0);
+    const [Category, setCategory] = useState("Film & Animation")
+
+
+    const handleValueChange = (e) => {
+
+    }
+
+    // const handleVideoTitleValueChange = (e) => {
+    //     setVideoTitle(e.target.value);
+    // }
+
     return (
             <div style = {{ maxWidth : '700px', margin : '2rem auto' }}>
                 <div style = {{ textAlign : 'center', marginBottom : '2rem' }}>
@@ -39,26 +67,32 @@ function VideoUploadPage() {
                     <br/>
                     <label>Title</label>
                     <Input 
-                        onChange
-                        value
+                        name = "VideoTitle"
+                        onChange = {handleValueChange}
+                        value = { VideoTitle }
                     />
                     <br/>
                     <br/>
                     <label>Description</label>
-                    <TextArea 
-                        onChange
-                        value />
+                    <TextArea
+                        name = "Description" 
+                        onChange = {handleValueChange}
+                        value = { Description } />
                     <br/>
                     <br/>
                     <select onChange>
-                        <option key vlaue></option>
+                        {PrivateOption.map((item, index) => {
+                            return <option key = {index} value={item.label}>{item.label}</option>
+                        })}
                     </select>
 
                     <br/>
                     <br/>
 
                     <select onChange>
-                        <option key vlaue></option>
+                    {CtegoryOption.map((item, index) => {
+                            return <option key = {index} value={item.label}>{item.label}</option>
+                        })}
                     </select>
 
                     <br/>
