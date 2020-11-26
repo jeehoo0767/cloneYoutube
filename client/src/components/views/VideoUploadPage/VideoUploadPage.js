@@ -27,8 +27,20 @@ function VideoUploadPage() {
     const [Category, setCategory] = useState("Film & Animation")
 
 
-    const handleValueChange = (e) => {
+    const onTitleChange = (e) => {
+        setVideoTitle(e.currentTarget.value);
+    }
 
+    const onDescriptionChange = (e) => {
+        setDescription(e.currentTarget.value);
+    }
+
+    const onPrivateChange = (e) => {
+        setPrivate(e.currentTarget.value)
+    }
+
+    const onCategoryChange = (e) => {
+        setCategory(e.currentTarget.value);
     }
 
     // const handleVideoTitleValueChange = (e) => {
@@ -68,7 +80,7 @@ function VideoUploadPage() {
                     <label>Title</label>
                     <Input 
                         name = "VideoTitle"
-                        onChange = {handleValueChange}
+                        onChange = {onTitleChange}
                         value = { VideoTitle }
                     />
                     <br/>
@@ -76,11 +88,11 @@ function VideoUploadPage() {
                     <label>Description</label>
                     <TextArea
                         name = "Description" 
-                        onChange = {handleValueChange}
+                        onChange = {onDescriptionChange}
                         value = { Description } />
                     <br/>
                     <br/>
-                    <select onChange>
+                    <select onChange={onPrivateChange}>
                         {PrivateOption.map((item, index) => {
                             return <option key = {index} value={item.label}>{item.label}</option>
                         })}
@@ -89,7 +101,7 @@ function VideoUploadPage() {
                     <br/>
                     <br/>
 
-                    <select onChange>
+                    <select onChange={onCategoryChange}>
                     {CtegoryOption.map((item, index) => {
                             return <option key = {index} value={item.label}>{item.label}</option>
                         })}
