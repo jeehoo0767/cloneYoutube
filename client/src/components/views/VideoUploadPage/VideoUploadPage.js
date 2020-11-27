@@ -55,6 +55,20 @@ function VideoUploadPage() {
         .then(response => {
             if(response.data.success) {
                 console.log(response.data);
+
+                let variable = {
+                    url : response.data.url,
+                    fileName : response.data.fileName
+                }
+
+                Axios.post('/apu/video/thumbnail', variable)
+                .then(response => {
+                    if(response.data.success) {
+
+                    } else {
+                        alert('썸네일 생성 실패')
+                    }
+                })
             } else {
                 alert('비디오 업로드 실패')
             }

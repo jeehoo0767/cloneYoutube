@@ -3,7 +3,7 @@ const router = express.Router();
 // const { Video } = require('../models/Video');
 const multer = require('multer');
 const { auth } = require('../middleware/auth');
-
+const ffmpeg = require('fluent-ffmpeg');
 
 let storage = multer.diskStorage({
     destination : (req, file, cb) => {
@@ -33,6 +33,12 @@ router.post('/uploadfiles', (req, res) => {
         return res.json({ success : true, url : res.req.file.path, fileName : res.req.file.filename})
     })
     
+})
+
+router.post('/thumbnail', (req, res) => {
+  
+    // 썸네일 생성 - 비디오 러닝타임 가져오기
+    ffmpeg()
 })
 
 module.exports = router;
