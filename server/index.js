@@ -7,6 +7,7 @@ const cors = require('cors');
 const { auth } = require('./middleware/auth');
 const config = require('./config/key');
 
+const { video } = require('./routes/video')
 const { User } = require('./models/User');
 
 //application/x-www-form-urlencoded
@@ -15,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended : true }));
 app.use(bodyParser.json()); 
 app.use(cookieParser());
 app.use(cors());  
+
+app.use('/api/video', require('./routes/video'));
 
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI, {
@@ -93,6 +96,10 @@ app.get('/api/users/logout', auth, (req,res) => {
                 success : true
             })
         })
+});
+
+app.post('/api/video/upload' ,(req, res) => {
+
 })
 
 app.listen(port, () => {

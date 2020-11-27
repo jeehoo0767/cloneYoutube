@@ -5,9 +5,10 @@
   "main": "./server/index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "client" : "cd client && yarn start",
+    "client": "cd client && yarn start",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently --kill-others-on-fail \"yarn start\" \"yarn client\""  },
+    "dev": "concurrently --kill-others-on-fail \"yarn start\" \"yarn client\""
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -19,6 +20,7 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.13",
+    "multer": "^1.4.2",
     "nodemon": "^2.0.6"
   }
 }
