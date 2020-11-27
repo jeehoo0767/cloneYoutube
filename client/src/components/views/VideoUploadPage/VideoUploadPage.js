@@ -54,7 +54,7 @@ function VideoUploadPage() {
         Axios.post('/api/video/uploadfiles', formData, config)
         .then(response => {
             if(response.data.success) {
-
+                console.log(response.data);
             } else {
                 alert('비디오 업로드 실패')
             }
