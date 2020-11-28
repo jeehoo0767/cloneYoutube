@@ -61,10 +61,10 @@ function VideoUploadPage() {
                     fileName : response.data.fileName
                 }
 
-                Axios.post('/apu/video/thumbnail', variable)
+                Axios.post('/api/video/thumbnail', variable)
                 .then(response => {
                     if(response.data.success) {
-
+                        console.log(response.data)
                     } else {
                         alert('썸네일 생성 실패')
                     }
