@@ -15,7 +15,8 @@ app.use(bodyParser.urlencoded({ extended : true }));
 //application/json
 app.use(bodyParser.json()); 
 app.use(cookieParser());
-app.use(cors());  
+app.use(cors());
+app.use('/uploads', express.static('uploads'));  
 
 app.use('/api/video', require('./routes/video'));
 
