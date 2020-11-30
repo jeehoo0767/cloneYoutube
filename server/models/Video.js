@@ -13,7 +13,7 @@ const videoSchema = mongoose.Schema({
     description : {
         type : String,
     },
-    privacy : {
+    private : {
         type : Number
     },
     filePath : {
@@ -31,7 +31,7 @@ const videoSchema = mongoose.Schema({
     },
     thumbnails : {
         type : String
-    }
+    },
 }, {timestamp : true});
 
 const Video = mongoose.model('Video', videoSchema);
