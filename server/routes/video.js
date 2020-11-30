@@ -24,6 +24,16 @@ let storage = multer.diskStorage({
 const upload = multer({ storage : storage }).single("file");
 
 
+
+router.get('/getVideos', (req, res) => {
+   Video.find()
+   .populate('writer')
+   .exec((err, videos) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).json({ success : true , videos})
+   })
+})
+
 router.post('/uploadfiles', (req, res) => {
     // 비디오를 서버에 저장.
     upload(req, res, err => {

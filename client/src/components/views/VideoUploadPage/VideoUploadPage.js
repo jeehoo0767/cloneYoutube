@@ -69,6 +69,7 @@ function VideoUploadPage(props) {
                 Axios.post('/api/video/thumbnail', variable)
                 .then(response => {
                     if(response.data.success) {
+                        console.log(`썸네일 패쓰 : ${response.data.thumbsFilePath}`)
                         setDuration(response.data.fileDuration);
                         setThumbnailPath(response.data.thumbsFilePath);
                     } else {
@@ -95,6 +96,7 @@ function VideoUploadPage(props) {
             thumbnail : ThumbnailPath 
         }
 
+        console.log(variables);
         Axios.post('/api/video/uploadVideo', variables)
         .then(response => {
             if(response.data.success) {

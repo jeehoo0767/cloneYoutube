@@ -29,7 +29,7 @@ const videoSchema = mongoose.Schema({
     duration : {
         type : String
     },
-    thumbnails : {
+    thumbnail : {
         type : String
     },
 }, {timestamp : true});
