@@ -19,6 +19,7 @@ app.use(cors());
 app.use('/uploads', express.static('uploads'));  
 
 app.use('/api/video', require('./routes/video'));
+app.use('/api/subscribe', require('./routes/subscribe'))
 
 const mongoose = require('mongoose');
 mongoose.connect(config.mongoURI, {
@@ -45,7 +46,7 @@ app.post('/api/users/register', (req, res) => {
 app.post('/api/users/login', (req, res) => {
     // 요청된 이메일 데이터베이스 에서 찾음
     //요청된 이메일이 데이터베이스에 있다면 비밀번호가 맞는지 확인
-    //비밀번호 까지 맞다면 토큰 생성
+    //비밀번호 까지 맞다면 토큰 생성!
 
     User.findOne({email : req.body.email}, (err, user) => {
         if(!user) {
