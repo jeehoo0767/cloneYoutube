@@ -1,5 +1,5 @@
-import Axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import Axios from 'axios';
 
 function Subscriber(props) {
 
@@ -70,7 +70,7 @@ function Subscriber(props) {
         <div>
             <button
             style = {{
-                backgroundColor: `${Subscribed ? '#CC0000' : '#AAAAAA'}`, border : 'none',
+                backgroundColor: `${Subscribed ? '#AAAAAA' : '#CC0000'}`, border : 'none',
                 borderRadius: '4px', color: 'white', outline : 'none', cursor : 'pointer',
                 padding: '10px 16px', fontWeight: '500', fontSize: '1rem', textTransform: 'uppercase'
             }}
