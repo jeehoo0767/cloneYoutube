@@ -10,6 +10,7 @@ import Comment from './Sections/Comment'
 function VideoDetailPage(props) {
 
     const [VideoDetail, setVideoDetail] = useState([])
+    const [Comments, setComments] = useState()
 
     const videoId = props.match.params.videoId
     const variable = {
@@ -25,6 +26,7 @@ function VideoDetailPage(props) {
                 alert('비디오 정보 가져오기 실패')
             }
         })
+        console.log(Comments)
     }, [])
 
     if(VideoDetail.writer) {
@@ -34,7 +36,7 @@ function VideoDetailPage(props) {
                 <Row gutter={[16, 16]}>
                     <Col lg={18} xs={24}>
                         <div style={{ width : '100%', padding : '3rem 4rem'}}>
-                            <video style={{ width : '100%', outline : 'none', cursor : 'pointer' }} src={`http://localhost:5000/${VideoDetail.filePath}`} controls/>
+                            <video style={{ width : '100%', height : '600px', outline : 'none', cursor : 'pointer' }} src={`http://localhost:5000/${VideoDetail.filePath}`} controls/>
                             <List.Item
                                 actions={[subscribeButton]}
                                 >
@@ -46,7 +48,7 @@ function VideoDetailPage(props) {
                             </List.Item>
     
                             {/* comment */ }
-                            <Comment />
+                            <Comment postId = {videoId}/>
                         </div>
                     </Col>
                     <Col lg={6} xs={24}>
