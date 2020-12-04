@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import React, {useState} from 'react'
 import {useSelector} from 'react-redux';
-
+import SingleComment from './SingleComment'
 function Comment(props) {
 
     const user = useSelector(state => state.user);
@@ -36,6 +36,8 @@ function Comment(props) {
             <p>Replies</p>
             <hr/>
 
+            {/* comment list*/}
+            <SingleComment />
             <form style={{ dispaly : 'flex '}} onSubmit={onSubmit}>
                 <textarea 
                     style = {{ width : '100%', borderRadius : '5px'}}
