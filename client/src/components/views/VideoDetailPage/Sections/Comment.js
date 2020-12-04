@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, {useState} from 'react'
 import {useSelector} from 'react-redux';
 import SingleComment from './SingleComment'
+
 function Comment(props) {
 
     const user = useSelector(state => state.user);
