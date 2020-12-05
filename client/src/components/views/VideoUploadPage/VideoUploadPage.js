@@ -32,6 +32,19 @@ function VideoUploadPage(props) {
     const [Duration, setDuration] = useState("");
     const [ThumbnailPath, setThumbnailPath] = useState("");
 
+    // const [inputs, setInputs] = useState({ VideoTitle : "", Description : ""});
+
+    // const { VideoTitle, Description } = inputs;
+    // const handleValueChange = (e) => {
+    //     const { value, name} = e.target;
+    //     const nextState = {};
+    //     setInputs({
+    //         ...inputs,
+    //         [name] : value
+    //     })
+    //     console.log(inputs);
+    // }
+
     const onTitleChange = (e) => {
         setVideoTitle(e.currentTarget.value);
     }
