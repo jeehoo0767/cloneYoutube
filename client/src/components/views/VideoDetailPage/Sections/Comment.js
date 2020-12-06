@@ -8,7 +8,7 @@ function Comment(props) {
     const user = useSelector(state => state.user);
 
     const [CommentValue, setCommentValue] = useState("")
-
+    
     const handleValueChange = (e) => {
         setCommentValue(e.currentTarget.value);
     }
@@ -38,7 +38,7 @@ function Comment(props) {
             <hr/>
 
             {/* comment list*/}
-            <SingleComment />
+            <SingleComment postId = {props.postId}/>
             <form style={{ dispaly : 'flex '}} onSubmit={onSubmit}>
                 <textarea 
                     style = {{ width : '100%', borderRadius : '5px'}}
