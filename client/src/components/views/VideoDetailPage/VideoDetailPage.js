@@ -10,7 +10,7 @@ import Comment from './Sections/Comment'
 function VideoDetailPage(props) {
 
     const [VideoDetail, setVideoDetail] = useState([])
-    const [Comments, setComments] = useState()
+    const [Comments, setComments] = useState([])
 
     const videoId = props.match.params.videoId
     const variable = {
@@ -27,6 +27,15 @@ function VideoDetailPage(props) {
             }
         })
         console.log(Comments)
+
+        Axios.post('/api/comment/getComments', variable)
+        .then(response => {
+            if(response.data.success) {
+                setComments(response.data.comments);
+            } else {
+                alert('댓글 정보 가져오기 실패')
+            }
+        })
     }, [])
 
     if(VideoDetail.writer) {
@@ -48,7 +57,7 @@ function VideoDetailPage(props) {
                             </List.Item>
     
                             {/* comment */ }
-                            <Comment postId = {videoId}/>
+                            <Comment commentList = {Comments} postId = {videoId}/>
                         </div>
                     </Col>
                     <Col lg={6} xs={24}>

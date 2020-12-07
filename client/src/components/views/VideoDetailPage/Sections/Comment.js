@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import SingleComment from './SingleComment'
 
 function Comment(props) {
-
+    
     const user = useSelector(state => state.user);
 
     const [CommentValue, setCommentValue] = useState("")
@@ -38,7 +38,13 @@ function Comment(props) {
             <hr/>
 
             {/* comment list*/}
-            <SingleComment postId = {props.postId}/>
+
+            {props.commentList && props.commentList.map((comment, index) => (
+                (!comment.responseTo &&
+                    <SingleComment key = {index} comment = {comment} postId = {props.videoId}/>
+                )
+            ))}
+
             <form style={{ dispaly : 'flex '}} onSubmit={onSubmit}>
                 <textarea 
                     style = {{ width : '100%', borderRadius : '5px'}}

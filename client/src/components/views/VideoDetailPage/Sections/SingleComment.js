@@ -25,7 +25,7 @@ function SingleComment(props) {
             content : CommentValue,
             writer : user.userData._id,
             postId : props.postId,
-            responseTo : 
+            responseTo : props.comment._id 
         }
         Axios.post('/api/comment/saveComment', variable)
         .then(response => {
@@ -45,9 +45,9 @@ function SingleComment(props) {
         <div>
             <Comment 
                 actions={actions}
-                author
-                avatar = {<Avatar src alt />}
-                content
+                author={props.comment.writer.name}
+                avatar = {<Avatar src={props.comment.writer.image} alt />}
+                content = { <p>{props.comment.content}</p>}
             />
     {OpenReply &&
         <form style={{ dispaly : 'flex '}} onSubmit={onSubmit} >
