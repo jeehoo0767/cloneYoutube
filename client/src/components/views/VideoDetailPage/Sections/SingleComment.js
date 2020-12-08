@@ -31,6 +31,8 @@ function SingleComment(props) {
         .then(response => {
             if(response.data.success) {
                 console.log(response.data);
+                props.stateRefresh(response.data.result);
+                setCommentValue("");
             } else {
                 alert("댓글 저장 실패")
             }

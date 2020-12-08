@@ -38,6 +38,10 @@ function VideoDetailPage(props) {
         })
     }, [])
 
+    const stateRefresh = (newComment) => {
+        setComments(Comments.concat(newComment))
+    }
+
     if(VideoDetail.writer) {
         const subscribeButton = VideoDetail.writer._id != localStorage.getItem('userId') && <Subscribe userTo={VideoDetail.writer._id} userFrom={localStorage.getItem('userId')}/>
         return (
@@ -57,7 +61,7 @@ function VideoDetailPage(props) {
                             </List.Item>
     
                             {/* comment */ }
-                            <Comment commentList = {Comments} postId = {videoId}/>
+                            <Comment stateRefresh={stateRefresh} commentList = {Comments} postId = {videoId}/>
                         </div>
                     </Col>
                     <Col lg={6} xs={24}>
