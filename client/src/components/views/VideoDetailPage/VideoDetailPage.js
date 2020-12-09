@@ -26,7 +26,7 @@ function VideoDetailPage(props) {
                 alert('비디오 정보 가져오기 실패')
             }
         })
-        console.log(Comments)
+        console.log("답글  : " + Comments)
 
         Axios.post('/api/comment/getComments', variable)
         .then(response => {
