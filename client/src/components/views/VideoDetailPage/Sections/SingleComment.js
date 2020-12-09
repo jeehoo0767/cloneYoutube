@@ -31,8 +31,9 @@ function SingleComment(props) {
         .then(response => {
             if(response.data.success) {
                 console.log(response.data);
-                props.stateRefresh(response.data.result);
                 setCommentValue("");
+                setOpenReply(false);
+                props.stateRefresh(response.data.result);
             } else {
                 alert("댓글 저장 실패")
             }
@@ -57,7 +58,7 @@ function SingleComment(props) {
                 style = {{ width : '100%', borderRadius : '5px'}}
                 onChange={onHandleChange}
                 value = {CommentValue}
-                placeholder="코멘트를 작성해 주세요"
+                placeholder="답글을 작성해 주세요"
             />
             <br/>
             <button style={{ width : '20%', height : '52px'}} onClick={onSubmit}>작성하기</button>
