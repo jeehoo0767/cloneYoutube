@@ -135,7 +135,7 @@ router.post('/upDisLike', (req, res) => {
         if(err) return res.json({ success : false, err})
         // 만약 좋아요가 이미 클릭 되어 있다면, 좋아요를 1 줄인다.
 
-        DisLike.findOneAndDelete(variable)
+        Like.findOneAndDelete(variable)
         .exec((err, disLikeResult) => {
             if(err) return res.status(400).json({ success : false, err})
             res.status(200).json({ success : true})
