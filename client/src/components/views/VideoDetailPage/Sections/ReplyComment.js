@@ -13,7 +13,6 @@ function ReplyComment(props) {
                 commentNumber++
             }
         })
-        console.log(`코멘트갯수 = ${commentNumber}`)
         setChildCommentNumber(commentNumber)
     }, [props.commentList])
 

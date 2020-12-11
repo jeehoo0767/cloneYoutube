@@ -29,7 +29,6 @@ function LikeDisLikes(props) {
             if(response.data.success) {
                 // 얼마나 많은 좋아요를 받았는지
                 setLikes(response.data.likes.length)
-                console.log(response.data.likes.length)
                 // 내가 이미 그 좋아요를 눌렀는지
                 response.data.likes.map(like => {
                     if(like.userId === props.userId) {
