@@ -31,7 +31,6 @@ function SingleComment(props) {
         Axios.post('/api/comment/saveComment', variable)
         .then(response => {
             if(response.data.success) {
-                console.log("답글 : " + response.data);
                 setCommentValue("");
                 setOpenReply(!OpenReply);
                 props.stateRefresh(response.data.result);
