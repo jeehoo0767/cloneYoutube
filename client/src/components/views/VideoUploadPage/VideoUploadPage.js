@@ -59,7 +59,6 @@ function VideoUploadPage(props) {
 
     const onCategoryChange = (e) => {
         setCategory(e.currentTarget.value);
-        console.log(Category)
     }
 
     const onDrop = (files) => {
@@ -72,7 +71,6 @@ function VideoUploadPage(props) {
         Axios.post('/api/video/uploadfiles', formData, config)
         .then(response => {
             if(response.data.success) {
-                console.log(response.data);
                 let variable = {
                     url : response.data.url,
                     fileName : response.data.fileName
@@ -82,7 +80,6 @@ function VideoUploadPage(props) {
                 Axios.post('/api/video/thumbnail', variable)
                 .then(response => {
                     if(response.data.success) {
-                        console.log(`썸네일 패쓰 : ${response.data.thumbsFilePath}`)
                         setDuration(response.data.fileDuration);
                         setThumbnailPath(response.data.thumbsFilePath);
                     } else {
@@ -97,7 +94,6 @@ function VideoUploadPage(props) {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log("요청");
         const variables = {
             writer : user.userData._id,
             title : VideoTitle,
@@ -108,8 +104,6 @@ function VideoUploadPage(props) {
             duration : Duration,
             thumbnail : ThumbnailPath 
         }
-
-        console.log(variables);
         Axios.post('/api/video/uploadVideo', variables)
         .then(response => {
             if(response.data.success) {
@@ -117,9 +111,8 @@ function VideoUploadPage(props) {
                 setTimeout(() => {
                     props.history.push('/');
                 }, 3000);
-                // console.log(response.data)
             } else {
-                console.log(response.data);
+                message.error('업로드 실패');
             }
         })
     }

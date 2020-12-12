@@ -57,9 +57,7 @@ router.post('/getVideoDetail', (req, res) => {
 
 router.post('/uploadVideo', (req, res) => {
     //비디오 정보 저장
-    console.log("비디오 업로드 요청")
     const video = new Video(req.body);
-    console.log(video);
     video.save((err, doc) => {
         if(err) return res.json({ success : false, err})
         res.status(200).json({ success : true})
@@ -72,7 +70,6 @@ router.post("/thumbnail", (req, res) => {
     let fileDuration ="";
 
     ffmpeg.ffprobe(req.body.url , function(err, metadata){
-        console.dir('maeadata : ' + metadata);
         console.log(metadata.format.duration);
 
         fileDuration = metadata.format.duration;
