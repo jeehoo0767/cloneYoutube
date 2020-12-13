@@ -57,7 +57,6 @@ app.post('/api/users/login', (req, res) => {
                 message : " 이메일에 해당하는 유저가 없음."
             })
         }
-        console.log(user);
         user.comparePassword(req.body.password, (err, isMatch) => {
             if(!isMatch){
                 return res.json({ loginSuccess : false, 
