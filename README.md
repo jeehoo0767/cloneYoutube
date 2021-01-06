@@ -1,5 +1,13 @@
 # React, express.js를 이용한 Youtube Clone
 
+## Skills
+- HTML5
+- CSS3
+- Redux
+- javascript
+- React.js
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
